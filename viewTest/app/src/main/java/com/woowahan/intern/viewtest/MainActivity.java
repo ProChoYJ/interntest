@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +17,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.woowahan.intern.viewtest.network.GsonRequest;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements Response.Listener<MainMenu>, Response.ErrorListener{
+public class MainActivity extends AppCompatActivity implements Response.Listener<MainMenus>, Response.ErrorListener{
 
     private Button btn_tmp;
     private Button btn_tmp2;
@@ -33,6 +36,15 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // json test data print
+//        mPeopleList = new ArrayList<>();
+        mPeopleListAdapter = new MainMenuListAdapter(this, mPeopleList);
+
+//        mPeopleListView = (ListView) findViewById(R.id.people_listview);
+//        mPeopleListView.setAdapter(mPeopleListAdapter);
+
+        //////////// button test event
 
         btn_tmp = (Button) findViewById(R.id.btn_tmp);
         btn_tmp2 = (Button) findViewById(R.id.btn_tmp2);
@@ -88,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     }
 
     private void requestPeoples(){
-        GsonRequest reqeust = new GsonRequest(URL, MainMenu.class, null, this, this);
+        GsonRequest reqeust = new GsonRequest(URL, MainMenus.class, null, this, this);
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(reqeust);
@@ -98,12 +110,15 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onErrorResponse(VolleyError error) {
 
+        Log.d("jsontest", "fail");
     }
 
     @Override
-    public void onResponse(MainMenu response) {
+    public void onResponse(MainMenus response) {
         mPeopleList.clear();
-        mPeopleList.addAll(response.getPeopleList());
+        mPeopleList.addAll(response.getMainMenuList());
+
+        Log.d("jsontest", "" + response.getMainMenuList().size());
 
         mPeopleListAdapter.notifyDataSetChanged();
     }

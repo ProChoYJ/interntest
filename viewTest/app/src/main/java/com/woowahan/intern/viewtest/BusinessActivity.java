@@ -26,6 +26,8 @@ public class BusinessActivity extends AppCompatActivity{
         mViewPager.setAdapter(mPagerAdapter);
 
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.business_tabs);
+        mPagerSlidingTabStrip.setShouldExpand(true);
+
         mPagerSlidingTabStrip.setViewPager(mViewPager);
     }
 

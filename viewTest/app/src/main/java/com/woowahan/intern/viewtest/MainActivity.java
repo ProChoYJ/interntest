@@ -8,12 +8,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.woowahan.intern.viewtest.network.GsonRequest;
+
+import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Response.Listener<MainMenu>, Response.ErrorListener{
 
     private Button btn_tmp;
     private Button btn_tmp2;
+
+    private final String URL = "http://internphp.woowahan.com:8005/intern_pro1/storeInfoC/jsonStoreIdView";
+    private ListView mPeopleListView;
+    private MainMenuListAdapter mPeopleListAdapter;
+    private List<MainMenu> mPeopleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,4 +78,34 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    ///////////// Gson
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        requestPeoples();
+    }
+
+    private void requestPeoples(){
+        GsonRequest reqeust = new GsonRequest(URL, MainMenu.class, null, this, this);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(reqeust);
+
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
+
+    @Override
+    public void onResponse(MainMenu response) {
+        mPeopleList.clear();
+        mPeopleList.addAll(response.getPeopleList());
+
+        mPeopleListAdapter.notifyDataSetChanged();
+    }
+
 }

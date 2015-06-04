@@ -27,7 +27,11 @@ public class SubActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mPagerAdapter);
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+
+        // tab full
+        //mPagerSlidingTabStrip.setShouldExpand(true);
         mPagerSlidingTabStrip.setViewPager(mViewPager);
+
     }
 
     @Override

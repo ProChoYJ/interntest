@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.SparseArray;
 
+import com.woowahan.intern.viewtest.businessexample.TestExpandableListViewActivity;
 import com.woowahan.intern.viewtest.textexample.TestExampleFragment;
 
 /**
@@ -12,7 +13,7 @@ import com.woowahan.intern.viewtest.textexample.TestExampleFragment;
  */
 public class BusinessFragmentPagerAdapter extends FragmentPagerAdapter{
 
-    private final String[] TITLES = {"MENU", "INFO"};//{ "Widget", "SystemInfo", "File", "Peoples" };
+    private final String[] TITLES = {"MENU"};//{ "Widget", "SystemInfo", "File", "Peoples" };
 
     private SparseArray<BaseFragment> mFragments;
 
@@ -27,18 +28,15 @@ public class BusinessFragmentPagerAdapter extends FragmentPagerAdapter{
     }
 
 
-    //////////////////////////////////////////// ºñÁö´Ï½º ¼­ºê ÆäÀÌÁö ¸¸µé±â
+    //////////////////////////////////////////// ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     @Override
     public Fragment getItem(int position) {
         BaseFragment fragment = null;
         switch (position){
             case 0:
-                fragment = TestExampleFragment.newInstance();
+                fragment = TestExpandableListViewActivity.newInstance();
                 break;
 
-            case 1:
-                fragment = TestExample2Fragment.newInstance();
-                break;
 
 
         }

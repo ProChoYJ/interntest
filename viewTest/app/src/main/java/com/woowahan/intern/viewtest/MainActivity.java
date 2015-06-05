@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -24,10 +25,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener<MainMenus>, Response.ErrorListener{
 
-    private Button btn_tmp;
-    private Button btn_tmp2;
+    private ImageButton btn_tmp;
+    private ImageButton btn_tmp2;
 
-    private final String URL = "http://internphp.woowahan.com:8005/intern_pro1/storeInfoC/jsonStoreIdView";
+    private final String URL = "http://internphp.woowahan.com:8005/intern_pro1/jsonC/jsonStoreIdView";
     private ListView mPeopleListView;
     private MainMenuListAdapter mPeopleListAdapter;
     private List<MainMenu> mPeopleList;
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
         //////////// button test event
 
-        btn_tmp = (Button) findViewById(R.id.btn_tmp);
-        btn_tmp2 = (Button) findViewById(R.id.btn_tmp2);
+        btn_tmp = (ImageButton) findViewById(R.id.btn_tmp);
+        btn_tmp2 = (ImageButton) findViewById(R.id.btn_tmp2);
         btn_tmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     }
 
     private void requestPeoples(){
+        Log.d("jsontest", "try request");
         GsonRequest reqeust = new GsonRequest(URL, MainMenus.class, null, this, this);
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -111,16 +113,18 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     public void onErrorResponse(VolleyError error) {
 
         Log.d("jsontest", "fail");
+
+        Log.e("jsontest", error.getCause().toString());
     }
 
     @Override
     public void onResponse(MainMenus response) {
-        mPeopleList.clear();
-        mPeopleList.addAll(response.getMainMenuList());
+//        mPeopleList.clear();
+//        mPeopleList.addAll(response.getMainMenuList());
 
         Log.d("jsontest", "" + response.getMainMenuList().size());
 
-        mPeopleListAdapter.notifyDataSetChanged();
+//        mPeopleListAdapter.notifyDataSetChanged();
     }
 
 }

@@ -21,7 +21,7 @@ public class SubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
-
+        // construcor set intent data -> ID
         mPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -31,6 +31,8 @@ public class SubActivity extends AppCompatActivity {
         // tab full
         //mPagerSlidingTabStrip.setShouldExpand(true);
         mPagerSlidingTabStrip.setViewPager(mViewPager);
+
+
 
     }
 

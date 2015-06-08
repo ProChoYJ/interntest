@@ -21,6 +21,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
     public MainFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
         mFragments = new SparseArray<>();
+        // ID set
 
     }
 
@@ -33,6 +34,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
         BaseFragment fragment = null;
         switch (position){
             case 0:
+                // newInstance(id)
                 fragment = TestExampleFragment.newInstance();
                 break;
 

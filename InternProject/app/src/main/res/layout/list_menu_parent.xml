@@ -3,17 +3,15 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:padding="10dp"
+              android:padding="20dp"
     >
 
     <TextView
-        android:id="@+id/tv_group"
-        android:layout_width="wrap_content"
+        android:id="@+id/menu_parent_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
-        android:text="parent"
-        android:textSize="25dip"
+        android:text="양념시리즈"
+        android:textSize="18sp"
         />
-
 
 </LinearLayout>

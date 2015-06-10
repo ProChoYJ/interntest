@@ -1,17 +1,31 @@
 package com.woowahan.intern.internproject.business;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by user on 2015. 6. 7..
  */
 public class Business {
-    private int Status;
-    private int Id;
-    private String Name;
-    private float aScore;
-    private int reCount;
-    private String Distance;
 
-    public Business(int status, int id, String name, float aScore, int reCount, String distance) {
+    @SerializedName("Status")
+    private int Status;
+
+    @SerializedName("Id")
+    private int Id;
+
+    @SerializedName("Name")
+    private String Name;
+
+    @SerializedName("Avg_Grade")
+    private float aScore;
+
+    @SerializedName("Review_Count")
+    private int reCount;
+
+    @SerializedName("Distance")
+    private float Distance;
+
+    public Business(int status, int id, String name, float aScore, int reCount, float distance) {
         Status = status;
         Id = id;
         Name = name;
@@ -60,11 +74,12 @@ public class Business {
         this.reCount = reCount;
     }
 
-    public String getDistance() {
+    public float getDistance() {
         return Distance;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(float distance) {
         Distance = distance;
     }
 }
+

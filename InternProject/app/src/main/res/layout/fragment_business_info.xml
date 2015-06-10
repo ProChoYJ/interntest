@@ -34,9 +34,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="서울시 송파구 석촌동 "
+                android:text=""
                 />
 
         </LinearLayout>
@@ -55,9 +56,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="09:00 ~ 20:30"
+                android:text=""
                 />
 
         </LinearLayout>
@@ -76,9 +78,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_open_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2015-01-01"
+                android:text=""
                 />
 
         </LinearLayout>
@@ -97,9 +100,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="02-000-0000"
+                android:text=""
                 />
 
         </LinearLayout>
@@ -118,9 +122,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_order_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="21"
+                android:text=""
                 />
 
         </LinearLayout>
@@ -138,9 +143,10 @@
                 />
 
             <TextView
+                android:id="@+id/business_info_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20년 전통의 치킨집으로 맛과 향이 ......."
+                android:text=""
                 />
 
         </LinearLayout>

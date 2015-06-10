@@ -1,14 +1,18 @@
 package com.woowahan.intern.internproject.business;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.woowahan.intern.internproject.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by user on 2015. 6. 7..
@@ -17,10 +21,10 @@ public class BusinessListAdapter extends BaseAdapter{
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private SparseArray<Business> mItemList;
+    private ArrayList<Business> mItemList;
     private ViewHoler holder;
 
-    public BusinessListAdapter(Context mContext, SparseArray<Business> mItemList){
+    public BusinessListAdapter(Context mContext, ArrayList<Business> mItemList){
         this.mContext = mContext;
         this.mItemList = mItemList;
         this.mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -46,6 +50,7 @@ public class BusinessListAdapter extends BaseAdapter{
         if(convertView == null) {
             convertView = mInflater.inflate(R.layout.list_item_business, parent, false);
             final ViewHoler holder = new ViewHoler();
+            holder.businessStatus = (ImageView) convertView.findViewById(R.id.img_business_status);
             holder.businessName = (TextView) convertView.findViewById(R.id.business_name);
             holder.businessAscore = (TextView) convertView.findViewById(R.id.business_ascore);
             holder.businessReview = (TextView) convertView.findViewById(R.id.business_reviwcount);
@@ -57,6 +62,11 @@ public class BusinessListAdapter extends BaseAdapter{
         }
         holder = (ViewHoler) convertView.getTag();
         Business item = mItemList.get(position);
+        if(item.getStatus() == 1){
+            holder.businessStatus.setImageResource(R.drawable.ing);
+        }else{
+            holder.businessStatus.setImageResource(R.drawable.ready);
+        }
 
         holder.businessName.setText(item.getName());
         holder.businessAscore.setText("" + item.getaScore());
@@ -70,6 +80,7 @@ public class BusinessListAdapter extends BaseAdapter{
 
 
     private class ViewHoler{
+        public ImageView businessStatus;
         public TextView businessName;
         public TextView businessAscore;
         public TextView businessReview;

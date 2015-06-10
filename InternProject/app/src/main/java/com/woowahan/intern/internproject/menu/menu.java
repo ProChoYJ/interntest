@@ -1,5 +1,7 @@
 package com.woowahan.intern.internproject.menu;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -7,13 +9,19 @@ import java.util.ArrayList;
  */
 public class menu {
 
+
+    @SerializedName("parent")
     private String Parent;
+
+    @SerializedName("childList")
     private ArrayList<Child> Childs;
 
     public menu(String parent, ArrayList<Child> childs) {
+
         this.Parent = parent;
         Childs = childs;
     }
+
 
     public String getParent() {
         return Parent;

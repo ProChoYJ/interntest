@@ -1,5 +1,7 @@
 package com.woowahan.intern.internproject.menu;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +9,12 @@ import java.util.ArrayList;
  */
 public class Menus {
 
+    @SerializedName("menuList")
     ArrayList<menu> Menus;
 
+    public Menus(ArrayList<menu> menus) {
+        Menus = menus;
+    }
 
     public ArrayList<menu> getMenus() {
         return Menus;

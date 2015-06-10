@@ -8,12 +8,5 @@
           app:showAsAction="never"/>
 
 
-      <item android:id="@+id/main_back_btn"
-            android:title="뒤로"
-            android:orderInCategory="100"
-            app:showAsAction="always"
-
-          />
-
 
 </menu>

@@ -48,12 +48,12 @@ public class BusinessInfoFragmentPagerAdapter extends FragmentPagerAdapter{
 
             case 1:
                 BusinessInfoFragment blf = BusinessInfoFragment.newInstance();
-                blf.setBusinessId(1);
+                blf.setBusinessId(businessId);
                 fragment = blf;
                 break;
             case 2:
                 ReviewListFragment rlf = ReviewListFragment.newInstance();
-                rlf.setBusinessId(1);
+                rlf.setBusinessId(businessId);
                 fragment = rlf;
                 break;
 

@@ -23,12 +23,13 @@ public class BusinessInfoActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_info);
-        setTitle("맛있는 가게");
+//        setTitle("맛있는 가게");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent it = getIntent();
         Log.d("test", "intent data:" + it.getExtras().getInt("Id"));
+        setTitle(it.getExtras().getString("Name"));
         // construcor set intent data -> ID
         mPagerAdapter = new BusinessInfoFragmentPagerAdapter(getSupportFragmentManager(),it.getExtras().getInt("Id"));
 
@@ -58,7 +59,7 @@ public class BusinessInfoActivity extends AppCompatActivity{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.home) {
+        if (id == android.R.id.home) {
             finish();
             return true;
         }

@@ -149,6 +149,7 @@ public class ReviewListFragment extends BaseFragment implements Response.Listene
 
     @Override
     public void onResponse(Reviews response) {
+        mInfoList.clear();
         mInfoList.addAll(response.getReviewList());
         reviewCount.setText("" + response.getReviewList().size());
         reviewAvgScore.setText(response.getAvg_Grade());

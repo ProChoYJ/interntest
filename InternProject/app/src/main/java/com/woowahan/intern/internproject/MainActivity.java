@@ -2,6 +2,9 @@ package com.woowahan.intern.internproject;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -10,24 +13,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
+import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private ViewPager mViewPager;
     private PagerSlidingTabStrip mPagerSlidingTabStrip;
     private MainFragmentPagerAdapter mPagerAdapter;
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("조영진 타이틀");
+        startActivity(new Intent(this, SplashActivity.class));
 
+        setTitle("배달 헬미");
 
+//        buildGoogleApiClient();
         // construcor set intent data -> ID
         mPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager());
 
@@ -51,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.main_back_btn);
 
         return true;
     }
@@ -90,4 +102,46 @@ public class MainActivity extends AppCompatActivity {
     public void setCurrentItem(int pagerIndex) {
         mViewPager.setCurrentItem(pagerIndex);
     }
+
+
+    ///// google service
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+
+            GPSLocation.getInstance().setLat("" + mLastLocation.getLatitude());
+            Log.d("json", "" + GPSLocation.getInstance().getLat());
+
+            GPSLocation.getInstance().setLng("" + mLastLocation.getLongitude());
+            Log.d("json", "" + GPSLocation.getInstance().getLng());
+        }
+    }
+
+
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        //Todo Google Play Service Fail 에러처리.
+        Log.e("json", "connection fail");
+    }
+
 }

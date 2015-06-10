@@ -13,7 +13,7 @@ import com.woowahan.intern.internproject.main.MainListFragment;
  */
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter{
 
-    private final String[] TITLES = {"홈", "치킨","중식","피자"};//{ "Widget", "SystemInfo", "File", "Peoples" };
+    private final String[] TITLES = {"홈", "치킨","중국집","피자", "한식/분식", "족발/보쌈", "야식", "찜/탕", "회/일식/돈까스", "도시락" ,"패스트푸드", "기타"};//{ "Widget", "SystemInfo", "File", "Peoples" };
 
     private SparseArray<BaseFragment> mFragments;
     private int mainpos;
@@ -44,6 +44,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter{
             case 1:
                 BusinessListFragment blf = BusinessListFragment.newInstance();
                 blf.setBusinessId(1);
+                blf.setCategoryName(TITLES[1]);
                 fragment = blf;
                 break;
             case 2:
@@ -55,6 +56,46 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter{
                 BusinessListFragment pblf = BusinessListFragment.newInstance();
                 pblf.setBusinessId(3);
                 fragment = pblf;
+                break;
+            case 4:
+                BusinessListFragment hblf = BusinessListFragment.newInstance();
+                hblf.setBusinessId(4);
+                fragment = hblf;
+                break;
+            case 5:
+                BusinessListFragment jblf = BusinessListFragment.newInstance();
+                jblf.setBusinessId(5);
+                fragment = jblf;
+                break;
+            case 6:
+                BusinessListFragment yblf = BusinessListFragment.newInstance();
+                yblf.setBusinessId(6);
+                fragment = yblf;
+                break;
+            case 7:
+                BusinessListFragment zblf = BusinessListFragment.newInstance();
+                zblf.setBusinessId(7);
+                fragment = zblf;
+                break;
+            case 8:
+                BusinessListFragment wblf = BusinessListFragment.newInstance();
+                wblf.setBusinessId(8);
+                fragment = wblf;
+                break;
+            case 9:
+                BusinessListFragment dblf = BusinessListFragment.newInstance();
+                dblf.setBusinessId(9);
+                fragment = dblf;
+                break;
+            case 10:
+                BusinessListFragment fblf = BusinessListFragment.newInstance();
+                fblf.setBusinessId(10);
+                fragment = fblf;
+                break;
+            case 11:
+                BusinessListFragment gblf = BusinessListFragment.newInstance();
+                gblf.setBusinessId(11);
+                fragment = gblf;
                 break;
 
 
